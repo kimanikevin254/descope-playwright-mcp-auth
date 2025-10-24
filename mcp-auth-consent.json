@@ -1,0 +1,2224 @@
+{
+  "contents": {
+    "startTask": "1",
+    "tasks": {
+      "0": {
+        "action": "logged-in",
+        "id": "0",
+        "name": "End",
+        "next": {},
+        "type": "automated",
+        "view": {
+          "x": 4632,
+          "y": 444
+        }
+      },
+      "1": {
+        "conditions": [
+          {
+            "atomicConditions": [
+              {
+                "operator": "is-true",
+                "predicate": {
+                  "type": "inline",
+                  "value": ""
+                },
+                "target": {
+                  "type": "context",
+                  "value": "user.loggedIn"
+                }
+              }
+            ],
+            "interactionId": "6pwt4omq1gd",
+            "name": "True"
+          },
+          {
+            "interactionId": "ELSE",
+            "name": "False"
+          }
+        ],
+        "id": "1",
+        "name": "Is the user logged in?",
+        "next": {
+          "rules": [
+            {
+              "interactionId": "6pwt4omq1gd",
+              "taskId": "14"
+            },
+            {
+              "interactionId": "ELSE",
+              "taskId": "7"
+            }
+          ]
+        },
+        "type": "condition",
+        "view": {
+          "x": 276,
+          "y": 48
+        }
+      },
+      "4": {
+        "conditions": [
+          {
+            "atomicConditions": [
+              {
+                "operator": "is-false",
+                "predicate": {
+                  "type": "inline",
+                  "value": ""
+                },
+                "target": {
+                  "type": "context",
+                  "value": "thirdPartyApp.user.consented"
+                }
+              }
+            ],
+            "interactionId": "szxmq7woocb",
+            "name": "False"
+          },
+          {
+            "interactionId": "ELSE",
+            "name": "True"
+          }
+        ],
+        "id": "4",
+        "name": "Is consent already granted?",
+        "next": {
+          "rules": [
+            {
+              "interactionId": "szxmq7woocb",
+              "taskId": "13"
+            },
+            {
+              "interactionId": "ELSE",
+              "taskId": "0"
+            }
+          ]
+        },
+        "type": "condition",
+        "view": {
+          "x": 2688,
+          "y": 336
+        }
+      },
+      "5": {
+        "allInputKeys": [
+          "thirdPartyAppApproveScopes"
+        ],
+        "calculatedInputKeys": true,
+        "contextKeys": [
+          "project.name",
+          "thirdPartyApp.name",
+          "thirdPartyApp.name"
+        ],
+        "id": "5",
+        "inputsMetadata": [
+          {
+            "displayName": "Inbound App Scopes",
+            "key": "thirdPartyAppApproveScopes"
+          }
+        ],
+        "name": "Consent Screen - Verified App",
+        "next": {
+          "rules": [
+            {
+              "interactionId": "_Z6xPaS9jy",
+              "taskId": "6"
+            },
+            {
+              "interactionId": "6N3cb_5t3T",
+              "taskId": "0"
+            }
+          ]
+        },
+        "screenId": "SC34PQcLlL3NtfuFHoXRNCrKv0Hu6",
+        "type": "screen",
+        "view": {
+          "x": 3660,
+          "y": 12
+        }
+      },
+      "6": {
+        "action": "create-consent",
+        "id": "6",
+        "name": "Update user consent",
+        "next": {
+          "rules": [
+            {
+              "interactionId": "success",
+              "taskId": "0"
+            }
+          ]
+        },
+        "type": "automated",
+        "view": {
+          "x": 4140,
+          "y": 324
+        }
+      },
+      "7": {
+        "allInputKeys": [
+          "email"
+        ],
+        "calculatedInputKeys": true,
+        "clientScripts": [],
+        "componentsConnectors": {},
+        "dynamicSelects": {},
+        "htmlTemplate": {
+          "2X1y3vdDA-": {
+            "custom": {},
+            "displayName": "Divider",
+            "hidden": false,
+            "isCanvas": false,
+            "linkedNodes": {},
+            "nodes": [],
+            "parent": "RP8Dj8wg6E",
+            "props": {
+              "children": "Or",
+              "id": "2X1y3vdDA-",
+              "italic": false,
+              "mode": "primary",
+              "variant": "body1",
+              "vertical": false
+            },
+            "type": {
+              "resolvedName": "Divider"
+            }
+          },
+          "3TVRPM-NqM": {
+            "custom": {
+              "type": "button"
+            },
+            "displayName": "Button",
+            "hidden": false,
+            "isCanvas": false,
+            "linkedNodes": {},
+            "nodes": [],
+            "parent": "RP8Dj8wg6E",
+            "props": {
+              "children": "Continue",
+              "color": "primary",
+              "data-type": "button",
+              "formNoValidate": false,
+              "full-width": true,
+              "id": "3TVRPM-NqM",
+              "shape": "",
+              "size": "md",
+              "variant": "contained"
+            },
+            "type": {
+              "resolvedName": "Button"
+            }
+          },
+          "Ek1mWE2Mag": {
+            "custom": {
+              "type": "input"
+            },
+            "displayName": "Email Input",
+            "hidden": false,
+            "isCanvas": false,
+            "linkedNodes": {},
+            "nodes": [],
+            "parent": "RP8Dj8wg6E",
+            "props": {
+              "bordered": true,
+              "copy-to-clipboard": false,
+              "data-errormessage-pattern-mismatch": "Must be a valid email",
+              "data-errormessage-value-missing": "Please fill out this field.",
+              "full-width": true,
+              "id": "Ek1mWE2Mag",
+              "label": "",
+              "label-type": "static",
+              "max": 100,
+              "name": "email",
+              "pattern": "^[\\w._%+-]+@[\\w.-]+\\.[A-Za-z]{2,}$",
+              "placeholder": "Email address *",
+              "required": true,
+              "size": "md",
+              "type": "email"
+            },
+            "type": {
+              "resolvedName": "EmailInput"
+            }
+          },
+          "FTAR1uG31j": {
+            "custom": {},
+            "displayName": "Container",
+            "hidden": false,
+            "isCanvas": true,
+            "linkedNodes": {},
+            "nodes": [
+              "UTdxgyTBPh",
+              "GyGw_AJiyl"
+            ],
+            "parent": "ROOT",
+            "props": {
+              "align": "center",
+              "background": "#ffffff00",
+              "data-editor-type": "container",
+              "direction": "column",
+              "id": "FTAR1uG31j",
+              "justify": "start",
+              "paddingX": "4",
+              "paddingY": "1",
+              "spaceBetween": "0.5",
+              "st-items-grow": 0,
+              "width": "100%"
+            },
+            "type": {
+              "resolvedName": "Container"
+            }
+          },
+          "FYf4hmIZgm": {
+            "custom": {
+              "subType": "social",
+              "type": "button"
+            },
+            "displayName": "Google Button",
+            "hidden": false,
+            "isCanvas": false,
+            "linkedNodes": {},
+            "nodes": [],
+            "parent": "jmGk9e-cOx",
+            "props": {
+              "aria-label": "Sign in with Google",
+              "children": "Sign in with Google",
+              "color": "primary",
+              "data-descope-provider": "google",
+              "data-type": "social",
+              "formNoValidate": true,
+              "full-width": true,
+              "id": "FYf4hmIZgm",
+              "size": "md",
+              "st-label-spacing": "10px",
+              "startIcon": "google",
+              "startIconColorText": false,
+              "variant": "outline"
+            },
+            "type": {
+              "resolvedName": "GoogleButton"
+            }
+          },
+          "GyGw_AJiyl": {
+            "custom": {},
+            "displayName": "Text",
+            "hidden": false,
+            "isCanvas": false,
+            "linkedNodes": {},
+            "nodes": [],
+            "parent": "FTAR1uG31j",
+            "props": {
+              "children": "By continuing, I agree to the Company's [Privacy Statement](https://www.example.com/privacy) and [Terms of Service](https://www.example.com/terms)\n\n",
+              "full-width": false,
+              "id": "GyGw_AJiyl",
+              "isEnriched": true,
+              "italic": false,
+              "link-target-blank": true,
+              "mode": "primary",
+              "text-align": "center",
+              "variant": "body1"
+            },
+            "type": {
+              "resolvedName": "Text"
+            }
+          },
+          "JMZqBmza1C": {
+            "custom": {},
+            "displayName": "Error Message",
+            "hidden": false,
+            "isCanvas": false,
+            "linkedNodes": {},
+            "nodes": [],
+            "parent": "RP8Dj8wg6E",
+            "props": {
+              "data-type": "error-message",
+              "full-width": false,
+              "id": "JMZqBmza1C",
+              "italic": false,
+              "link-target-blank": true,
+              "mode": "error",
+              "text-align": "center",
+              "variant": "body1"
+            },
+            "type": {
+              "resolvedName": "ErrorMessage"
+            }
+          },
+          "ROOT": {
+            "custom": {},
+            "displayName": "Container",
+            "hidden": false,
+            "isCanvas": true,
+            "linkedNodes": {},
+            "nodes": [
+              "U9D2pHfkJp",
+              "FTAR1uG31j",
+              "RP8Dj8wg6E"
+            ],
+            "props": {
+              "align": "center",
+              "background": "",
+              "data-editor-type": "container",
+              "direction": "column",
+              "id": "ROOT",
+              "justify": "center",
+              "paddingX": "4",
+              "paddingY": "8",
+              "spaceBetween": "4",
+              "st-items-grow": 0,
+              "width": "100%"
+            },
+            "type": {
+              "resolvedName": "Container"
+            }
+          },
+          "RP8Dj8wg6E": {
+            "custom": {},
+            "displayName": "Container",
+            "hidden": false,
+            "isCanvas": true,
+            "linkedNodes": {},
+            "nodes": [
+              "Ek1mWE2Mag",
+              "3TVRPM-NqM",
+              "2X1y3vdDA-",
+              "jmGk9e-cOx",
+              "JMZqBmza1C"
+            ],
+            "parent": "ROOT",
+            "props": {
+              "align": "start",
+              "background": "#ffffff00",
+              "data-editor-type": "container",
+              "direction": "row",
+              "id": "RP8Dj8wg6E",
+              "justify": "center",
+              "paddingX": "1",
+              "paddingY": "1",
+              "spaceBetween": "4",
+              "st-items-grow": 0,
+              "width": "100%"
+            },
+            "type": {
+              "resolvedName": "Container"
+            }
+          },
+          "U9D2pHfkJp": {
+            "custom": {},
+            "displayName": "Logo",
+            "hidden": false,
+            "isCanvas": false,
+            "linkedNodes": {},
+            "nodes": [],
+            "parent": "ROOT",
+            "props": {
+              "alt": "Logo",
+              "height": "100px",
+              "id": "U9D2pHfkJp"
+            },
+            "type": {
+              "resolvedName": "Logo"
+            }
+          },
+          "UTdxgyTBPh": {
+            "custom": {},
+            "displayName": "Text",
+            "hidden": false,
+            "isCanvas": false,
+            "linkedNodes": {},
+            "nodes": [],
+            "parent": "FTAR1uG31j",
+            "props": {
+              "children": "Welcome!",
+              "full-width": false,
+              "id": "UTdxgyTBPh",
+              "isEnriched": true,
+              "italic": false,
+              "link-target-blank": true,
+              "mode": "primary",
+              "text-align": "center",
+              "variant": "h3"
+            },
+            "type": {
+              "resolvedName": "Text"
+            }
+          },
+          "jmGk9e-cOx": {
+            "custom": {},
+            "displayName": "Container",
+            "hidden": false,
+            "isCanvas": true,
+            "linkedNodes": {},
+            "nodes": [
+              "FYf4hmIZgm"
+            ],
+            "parent": "RP8Dj8wg6E",
+            "props": {
+              "align": "start",
+              "background": "#ffffff00",
+              "data-editor-type": "container",
+              "direction": "row",
+              "id": "jmGk9e-cOx",
+              "justify": "center",
+              "paddingX": "1",
+              "paddingY": "1",
+              "spaceBetween": "2",
+              "st-items-grow": 0,
+              "width": "100%"
+            },
+            "type": {
+              "resolvedName": "Container"
+            }
+          }
+        },
+        "id": "7",
+        "inputKeys": [
+          "email"
+        ],
+        "inputsMetadata": [
+          {
+            "displayName": "Email Input",
+            "key": "email"
+          }
+        ],
+        "interactions": [
+          {
+            "id": "3TVRPM-NqM",
+            "label": "Continue",
+            "type": "button"
+          },
+          {
+            "icon": "google",
+            "id": "FYf4hmIZgm",
+            "label": "Sign in with Google",
+            "subType": "social",
+            "type": "button"
+          }
+        ],
+        "name": "Welcome Screen",
+        "next": {
+          "rules": [
+            {
+              "interactionId": "3TVRPM-NqM",
+              "taskId": "8"
+            },
+            {
+              "interactionId": "FYf4hmIZgm",
+              "taskId": "11"
+            }
+          ]
+        },
+        "recoveryCodesData": [],
+        "screenId": "SC34PQcQ9AWaBqAEeuyBoPitKyOf3",
+        "type": "screen",
+        "view": {
+          "x": 756,
+          "y": 288
+        }
+      },
+      "8": {
+        "action": "sign-up-or-in-otp-email",
+        "arguments": {
+          "extraTemplateVals": {
+            "type": "inline",
+            "value": ""
+          },
+          "providerId": {
+            "type": "inline",
+            "value": ""
+          },
+          "templateId": {
+            "type": "inline",
+            "value": ""
+          }
+        },
+        "id": "8",
+        "name": "Sign Up or In / OTP / Email",
+        "next": {
+          "rules": [
+            {
+              "interactionId": "success",
+              "taskId": "9"
+            }
+          ]
+        },
+        "type": "automated",
+        "view": {
+          "x": 1236,
+          "y": 312
+        }
+      },
+      "9": {
+        "allInputKeys": [
+          "code"
+        ],
+        "calculatedInputKeys": true,
+        "contextKeys": [
+          "sentTo.maskedEmail"
+        ],
+        "id": "9",
+        "inputsMetadata": [
+          {
+            "displayName": "One Time Code",
+            "key": "code"
+          }
+        ],
+        "name": "Verify OTP",
+        "next": {
+          "rules": [
+            {
+              "interactionId": "pnOqEGpL1b",
+              "taskId": "7"
+            },
+            {
+              "interactionId": "resend",
+              "taskId": "8"
+            },
+            {
+              "interactionId": "oneTimeCodeId",
+              "taskId": "10"
+            }
+          ]
+        },
+        "screenId": "SC34PQcOGamW1DykGWbWu5hmszDVR",
+        "type": "screen",
+        "view": {
+          "x": 1728,
+          "y": 216
+        }
+      },
+      "10": {
+        "action": "verify-code-otp-email",
+        "id": "10",
+        "name": "Verify Code / OTP / Email",
+        "next": {
+          "rules": [
+            {
+              "interactionId": "success",
+              "taskId": "4"
+            }
+          ]
+        },
+        "type": "automated",
+        "view": {
+          "x": 2208,
+          "y": 336
+        }
+      },
+      "11": {
+        "action": "oauth-start",
+        "arguments": {
+          "allowSetDefaultProvider": {
+            "type": "inline",
+            "value": ""
+          },
+          "defaultProvider": {
+            "type": "inline",
+            "value": ""
+          },
+          "exchangeStepId": {
+            "type": "inline",
+            "value": "11.end"
+          },
+          "loginHint": {
+            "type": "inline",
+            "value": ""
+          },
+          "popup": {
+            "type": "inline",
+            "value": ""
+          },
+          "prompt": {
+            "type": "inline",
+            "value": []
+          },
+          "rawResponse": {
+            "type": "inline",
+            "value": ""
+          },
+          "redirectUrl": {
+            "type": "inline",
+            "value": ""
+          }
+        },
+        "id": "11",
+        "name": "Sign Up or In / OAuth",
+        "next": {
+          "rules": [
+            {
+              "interactionId": "success",
+              "taskId": "11.end"
+            }
+          ]
+        },
+        "type": "automated",
+        "view": {
+          "x": 1728,
+          "y": 456
+        }
+      },
+      "12": {
+        "allInputKeys": [
+          "thirdPartyAppApproveScopes"
+        ],
+        "calculatedInputKeys": true,
+        "contextKeys": [
+          "project.name",
+          "thirdPartyApp.name",
+          "thirdPartyApp.name"
+        ],
+        "id": "12",
+        "inputsMetadata": [
+          {
+            "displayName": "Inbound App Scopes",
+            "key": "thirdPartyAppApproveScopes"
+          }
+        ],
+        "name": "Consent Screen - Unverified App",
+        "next": {
+          "rules": [
+            {
+              "interactionId": "_Z6xPaS9jy",
+              "taskId": "6"
+            },
+            {
+              "interactionId": "6N3cb_5t3T",
+              "taskId": "0"
+            }
+          ]
+        },
+        "screenId": "SC34PQcSwk2gkZibYTKArwbQHdYT3",
+        "type": "screen",
+        "view": {
+          "x": 3660,
+          "y": 300
+        }
+      },
+      "13": {
+        "conditions": [
+          {
+            "atomicConditions": [
+              {
+                "operator": "is-true",
+                "predicate": {
+                  "type": "inline",
+                  "value": ""
+                },
+                "target": {
+                  "type": "context",
+                  "value": "inboundApp.verified"
+                }
+              }
+            ],
+            "interactionId": "xnkdbzy0uti",
+            "name": "True"
+          },
+          {
+            "interactionId": "ELSE",
+            "name": "False"
+          }
+        ],
+        "id": "13",
+        "name": "Is inbound app verified?",
+        "next": {
+          "rules": [
+            {
+              "interactionId": "xnkdbzy0uti",
+              "taskId": "5"
+            },
+            {
+              "interactionId": "ELSE",
+              "taskId": "12"
+            }
+          ]
+        },
+        "type": "condition",
+        "view": {
+          "x": 3180,
+          "y": 252
+        }
+      },
+      "14": {
+        "action": "loadUser",
+        "id": "14",
+        "name": "Load User",
+        "next": {
+          "rules": [
+            {
+              "interactionId": "success",
+              "taskId": "4"
+            }
+          ]
+        },
+        "type": "automated",
+        "view": {
+          "x": 1236,
+          "y": 84
+        }
+      },
+      "11.end": {
+        "action": "exchange-oauth-code",
+        "arguments": {
+          "allowSetDefaultProvider": {
+            "type": "inline",
+            "value": ""
+          },
+          "defaultProvider": {
+            "type": "inline",
+            "value": ""
+          },
+          "exchangeStepId": {
+            "type": "inline",
+            "value": "11.end"
+          },
+          "loginHint": {
+            "type": "inline",
+            "value": ""
+          },
+          "popup": {
+            "type": "inline",
+            "value": ""
+          },
+          "prompt": {
+            "type": "inline",
+            "value": []
+          },
+          "rawResponse": {
+            "type": "inline",
+            "value": ""
+          },
+          "redirectUrl": {
+            "type": "inline",
+            "value": ""
+          }
+        },
+        "id": "11.end",
+        "name": "Sign Up or In / OAuth",
+        "next": {
+          "rules": [
+            {
+              "interactionId": "success",
+              "taskId": "4"
+            }
+          ]
+        },
+        "type": "automated",
+        "view": {
+          "x": 1728,
+          "y": 456
+        }
+      },
+      "start": {
+        "id": "start",
+        "name": "start",
+        "next": {
+          "rules": [
+            {
+              "taskId": "1"
+            }
+          ]
+        },
+        "view": {
+          "x": 12,
+          "y": 132
+        }
+      }
+    }
+  },
+  "flowId": "mcp-auth-consent",
+  "metadata": {
+    "componentsVersion": "2.1.17",
+    "description": "Grant user consent to an inbound app.",
+    "name": "Playwright MCP Auth - User Consent",
+    "sharedInteractions": [
+      {
+        "id": "0.success",
+        "type": "success"
+      }
+    ]
+  },
+  "references": {},
+  "screens": [
+    {
+      "contents": {
+        "1sMmkeVxVT": {
+          "custom": {},
+          "displayName": "Error Message",
+          "hidden": false,
+          "isCanvas": false,
+          "linkedNodes": {},
+          "nodes": [],
+          "parent": "woAD652rBY",
+          "props": {
+            "align": "center",
+            "data-type": "error-message",
+            "full-width": false,
+            "id": "1sMmkeVxVT",
+            "italic": false,
+            "link-target-blank": true,
+            "mode": "error",
+            "text-align": "center",
+            "variant": "body1"
+          },
+          "type": {
+            "resolvedName": "ErrorMessage"
+          }
+        },
+        "6N3cb_5t3T": {
+          "custom": {
+            "type": "button"
+          },
+          "displayName": "Button",
+          "hidden": false,
+          "isCanvas": false,
+          "linkedNodes": {},
+          "nodes": [],
+          "parent": "woAD652rBY",
+          "props": {
+            "children": "Cancel",
+            "color": "primary",
+            "data-type": "button",
+            "formNoValidate": false,
+            "full-width": true,
+            "id": "6N3cb_5t3T",
+            "shape": "",
+            "size": "md",
+            "variant": "outline"
+          },
+          "type": {
+            "resolvedName": "Button"
+          }
+        },
+        "EQIG9X08-e": {
+          "custom": {},
+          "displayName": "Container",
+          "hidden": false,
+          "isCanvas": true,
+          "linkedNodes": {},
+          "nodes": [
+            "u8HvnRL4YV"
+          ],
+          "parent": "ROOT",
+          "props": {
+            "align": "start",
+            "background": "#FFFFFFFF",
+            "backgroundImageUrl": "",
+            "data-editor-type": "container",
+            "direction": "column",
+            "id": "EQIG9X08-e",
+            "justify": "start",
+            "paddingX": "1",
+            "paddingY": "1",
+            "spaceBetween": "4",
+            "st-items-grow": 0,
+            "width": "100%"
+          },
+          "type": {
+            "resolvedName": "Container"
+          }
+        },
+        "LmrSIGOWZb": {
+          "custom": {},
+          "displayName": "Text",
+          "hidden": false,
+          "isCanvas": false,
+          "linkedNodes": {},
+          "nodes": [],
+          "parent": "OHS3uAG0xM",
+          "props": {
+            "align": "center",
+            "children": "Connect {{project.name}} with {{thirdPartyApp.name}}\n\n",
+            "full-width": false,
+            "id": "LmrSIGOWZb",
+            "isEnriched": true,
+            "italic": false,
+            "link-target-blank": true,
+            "mode": "primary",
+            "text-align": "left",
+            "variant": "subtitle1"
+          },
+          "type": {
+            "resolvedName": "Text"
+          }
+        },
+        "OHS3uAG0xM": {
+          "custom": {},
+          "displayName": "Container",
+          "hidden": false,
+          "isCanvas": true,
+          "linkedNodes": {},
+          "nodes": [
+            "LmrSIGOWZb"
+          ],
+          "parent": "ROOT",
+          "props": {
+            "align": "start",
+            "background": "#ffffff00",
+            "data-editor-type": "container",
+            "direction": "row",
+            "id": "OHS3uAG0xM",
+            "justify": "start",
+            "paddingX": "1",
+            "paddingY": "1",
+            "spaceBetween": "4",
+            "st-items-grow": 0,
+            "width": "100%"
+          },
+          "type": {
+            "resolvedName": "Container"
+          }
+        },
+        "ROOT": {
+          "custom": {},
+          "displayName": "Container",
+          "hidden": false,
+          "isCanvas": true,
+          "linkedNodes": {},
+          "nodes": [
+            "qIfDVKm2T2",
+            "OHS3uAG0xM",
+            "Zgp3CGaHAw",
+            "EQIG9X08-e",
+            "woAD652rBY"
+          ],
+          "props": {
+            "align": "center",
+            "background": "#FFFFFFFF",
+            "backgroundImageUrl": "",
+            "data-editor-type": "container",
+            "direction": "column",
+            "id": "ROOT",
+            "justify": "center",
+            "paddingX": "4",
+            "paddingY": "8",
+            "space-between": "md",
+            "spaceBetween": "4",
+            "st-items-grow": 0,
+            "width": "100%"
+          },
+          "type": {
+            "resolvedName": "Container"
+          }
+        },
+        "Zgp3CGaHAw": {
+          "custom": {},
+          "displayName": "Container",
+          "hidden": false,
+          "isCanvas": true,
+          "linkedNodes": {},
+          "nodes": [
+            "_FBvzhJtOx"
+          ],
+          "parent": "ROOT",
+          "props": {
+            "align": "start",
+            "background": "#ffffff00",
+            "data-editor-type": "container",
+            "direction": "row",
+            "id": "Zgp3CGaHAw",
+            "justify": "start",
+            "paddingX": "1",
+            "paddingY": "1",
+            "spaceBetween": "4",
+            "st-items-grow": 0,
+            "width": "100%"
+          },
+          "type": {
+            "resolvedName": "Container"
+          }
+        },
+        "_FBvzhJtOx": {
+          "custom": {},
+          "displayName": "Text",
+          "hidden": false,
+          "isCanvas": false,
+          "linkedNodes": {},
+          "nodes": [],
+          "parent": "Zgp3CGaHAw",
+          "props": {
+            "children": "{{thirdPartyApp.name}} will be able to:\n\n",
+            "full-width": false,
+            "id": "_FBvzhJtOx",
+            "isEnriched": true,
+            "italic": false,
+            "link-target-blank": true,
+            "mode": "primary",
+            "text-align": "left",
+            "variant": "body1"
+          },
+          "type": {
+            "resolvedName": "Text"
+          }
+        },
+        "_Z6xPaS9jy": {
+          "custom": {
+            "type": "button"
+          },
+          "displayName": "Button",
+          "hidden": false,
+          "isCanvas": false,
+          "linkedNodes": {},
+          "nodes": [],
+          "parent": "woAD652rBY",
+          "props": {
+            "children": "Authorize",
+            "color": "primary",
+            "data-type": "button",
+            "formNoValidate": false,
+            "full-width": true,
+            "id": "_Z6xPaS9jy",
+            "shape": "",
+            "size": "md",
+            "variant": "contained"
+          },
+          "type": {
+            "resolvedName": "Button"
+          }
+        },
+        "ojc6ht-R78": {
+          "custom": {},
+          "displayName": "Inbound App Logo",
+          "hidden": false,
+          "isCanvas": false,
+          "linkedNodes": {},
+          "nodes": [],
+          "parent": "qIfDVKm2T2",
+          "props": {
+            "id": "ojc6ht-R78",
+            "size": "md"
+          },
+          "type": {
+            "resolvedName": "ThirdPartyAppLogo"
+          }
+        },
+        "qIfDVKm2T2": {
+          "custom": {},
+          "displayName": "Container",
+          "hidden": false,
+          "isCanvas": true,
+          "linkedNodes": {},
+          "nodes": [
+            "ojc6ht-R78"
+          ],
+          "parent": "ROOT",
+          "props": {
+            "align": "start",
+            "background": "#ffffff00",
+            "data-editor-type": "container",
+            "direction": "row",
+            "id": "qIfDVKm2T2",
+            "justify": "center",
+            "paddingX": "1",
+            "paddingY": "1",
+            "spaceBetween": "4",
+            "st-items-grow": 0,
+            "width": "100%"
+          },
+          "type": {
+            "resolvedName": "Container"
+          }
+        },
+        "u8HvnRL4YV": {
+          "custom": {},
+          "displayName": "Inbound App Scopes",
+          "hidden": false,
+          "isCanvas": false,
+          "linkedNodes": {},
+          "nodes": [],
+          "parent": "EQIG9X08-e",
+          "props": {
+            "id": "u8HvnRL4YV",
+            "name": "thirdPartyAppApproveScopes",
+            "size": "md",
+            "st-gap": "0em",
+            "variant": "checkbox"
+          },
+          "type": {
+            "resolvedName": "ScopesList"
+          }
+        },
+        "woAD652rBY": {
+          "custom": {},
+          "displayName": "Container",
+          "hidden": false,
+          "isCanvas": true,
+          "linkedNodes": {},
+          "nodes": [
+            "_Z6xPaS9jy",
+            "1sMmkeVxVT",
+            "6N3cb_5t3T"
+          ],
+          "parent": "ROOT",
+          "props": {
+            "align": "center",
+            "background": "#FFFFFFFF",
+            "data-editor-type": "container",
+            "direction": "column",
+            "id": "woAD652rBY",
+            "justify": "start",
+            "paddingX": "1",
+            "paddingY": "1",
+            "spaceBetween": "4",
+            "st-items-grow": 0,
+            "width": "100%"
+          },
+          "type": {
+            "resolvedName": "Container"
+          }
+        }
+      },
+      "interactions": [
+        {
+          "id": "6N3cb_5t3T",
+          "label": "Cancel",
+          "type": "button"
+        },
+        {
+          "id": "_Z6xPaS9jy",
+          "label": "Authorize",
+          "type": "button"
+        }
+      ],
+      "screenId": "SC34PQcLlL3NtfuFHoXRNCrKv0Hu6"
+    },
+    {
+      "contents": {
+        "ROOT": {
+          "custom": {},
+          "displayName": "Container",
+          "hidden": false,
+          "isCanvas": true,
+          "linkedNodes": {},
+          "nodes": [
+            "auED4dEJkJ",
+            "eBGiu9cYSb",
+            "yZNZ2ZVVu_"
+          ],
+          "props": {
+            "align": "center",
+            "background": "",
+            "data-editor-type": "container",
+            "direction": "column",
+            "id": "ROOT",
+            "justify": "center",
+            "paddingX": "4",
+            "paddingY": "4",
+            "spaceBetween": "5",
+            "width": "100%"
+          },
+          "type": {
+            "resolvedName": "Container"
+          }
+        },
+        "auED4dEJkJ": {
+          "custom": {},
+          "displayName": "Text",
+          "hidden": false,
+          "isCanvas": false,
+          "linkedNodes": {},
+          "nodes": [],
+          "parent": "ROOT",
+          "props": {
+            "children": "We've sent a message containing a 6-digit code to {{sentTo.maskedEmail}}",
+            "full-width": false,
+            "id": "auED4dEJkJ",
+            "italic": false,
+            "mode": "primary",
+            "text-align": "center",
+            "variant": "subtitle1"
+          },
+          "type": {
+            "resolvedName": "Text"
+          }
+        },
+        "eBGiu9cYSb": {
+          "custom": {},
+          "displayName": "Text",
+          "hidden": false,
+          "isCanvas": false,
+          "linkedNodes": {},
+          "nodes": [],
+          "parent": "ROOT",
+          "props": {
+            "children": "Enter Code",
+            "full-width": false,
+            "id": "eBGiu9cYSb",
+            "italic": false,
+            "mode": "primary",
+            "text-align": "center",
+            "variant": "subtitle2"
+          },
+          "type": {
+            "resolvedName": "Text"
+          }
+        },
+        "fyz-aN6hyx": {
+          "custom": {},
+          "displayName": "Error Message",
+          "hidden": false,
+          "isCanvas": false,
+          "linkedNodes": {},
+          "nodes": [],
+          "parent": "thNbUTWOGY",
+          "props": {
+            "color": "error",
+            "data-type": "error-message",
+            "full-width": false,
+            "hide-when-empty": true,
+            "id": "fyz-aN6hyx",
+            "italic": false,
+            "mode": "error",
+            "text-align": "center",
+            "variant": "body1"
+          },
+          "type": {
+            "resolvedName": "ErrorMessage"
+          }
+        },
+        "oOOUcyEOVr": {
+          "custom": {},
+          "displayName": "Container",
+          "hidden": false,
+          "isCanvas": true,
+          "linkedNodes": {},
+          "nodes": [
+            "resend",
+            "pnOqEGpL1b"
+          ],
+          "parent": "yZNZ2ZVVu_",
+          "props": {
+            "align": "start",
+            "background": "#ffffff00",
+            "data-editor-type": "container",
+            "direction": "row",
+            "id": "oOOUcyEOVr",
+            "justify": "center",
+            "paddingX": "5",
+            "paddingY": "0",
+            "spaceBetween": "0",
+            "width": "100%"
+          },
+          "type": {
+            "resolvedName": "Container"
+          }
+        },
+        "oneTimeCodeId": {
+          "custom": {
+            "type": "oneTimeCode"
+          },
+          "displayName": "One Time Code",
+          "hidden": false,
+          "isCanvas": false,
+          "linkedNodes": {},
+          "nodes": [],
+          "parent": "yZNZ2ZVVu_",
+          "props": {
+            "bordered": true,
+            "data-auto-submit": true,
+            "data-errormessage-pattern-mismatch": "Must be a 6 digit number",
+            "digits": 6,
+            "full-width": false,
+            "id": "oneTimeCodeId",
+            "label": "",
+            "name": "code",
+            "required": true,
+            "size": "lg",
+            "type": "tel"
+          },
+          "type": {
+            "resolvedName": "Code"
+          }
+        },
+        "pnOqEGpL1b": {
+          "custom": {
+            "type": "button"
+          },
+          "displayName": "Button",
+          "hidden": false,
+          "isCanvas": false,
+          "linkedNodes": {},
+          "nodes": [],
+          "parent": "oOOUcyEOVr",
+          "props": {
+            "children": "Choose another authentication method",
+            "color": "primary",
+            "data-type": "button",
+            "formNoValidate": true,
+            "full-width": true,
+            "id": "pnOqEGpL1b",
+            "mode": "primary",
+            "size": "sm",
+            "variant": "link"
+          },
+          "type": {
+            "resolvedName": "Button"
+          }
+        },
+        "resend": {
+          "custom": {
+            "type": "button"
+          },
+          "displayName": "Button",
+          "hidden": false,
+          "isCanvas": false,
+          "linkedNodes": {},
+          "nodes": [],
+          "parent": "oOOUcyEOVr",
+          "props": {
+            "children": "Send again",
+            "color": "primary",
+            "data-type": "button",
+            "formNoValidate": true,
+            "full-width": true,
+            "id": "resend",
+            "mode": "primary",
+            "size": "sm",
+            "variant": "link"
+          },
+          "type": {
+            "resolvedName": "Button"
+          }
+        },
+        "thNbUTWOGY": {
+          "custom": {},
+          "displayName": "Container",
+          "hidden": false,
+          "isCanvas": true,
+          "linkedNodes": {},
+          "nodes": [
+            "fyz-aN6hyx"
+          ],
+          "parent": "yZNZ2ZVVu_",
+          "props": {
+            "align": "start",
+            "background": "#ffffff00",
+            "data-editor-type": "container",
+            "direction": "row",
+            "id": "thNbUTWOGY",
+            "justify": "center",
+            "paddingX": "4",
+            "paddingY": "3",
+            "spaceBetween": "1",
+            "width": "100%"
+          },
+          "type": {
+            "resolvedName": "Container"
+          }
+        },
+        "yZNZ2ZVVu_": {
+          "custom": {},
+          "displayName": "Container",
+          "hidden": false,
+          "isCanvas": true,
+          "linkedNodes": {},
+          "nodes": [
+            "oneTimeCodeId",
+            "thNbUTWOGY",
+            "oOOUcyEOVr"
+          ],
+          "parent": "ROOT",
+          "props": {
+            "align": "center",
+            "background": "",
+            "data-editor-type": "container",
+            "direction": "column",
+            "id": "yZNZ2ZVVu_",
+            "justify": "start",
+            "paddingX": "4",
+            "paddingY": "4",
+            "spaceBetween": "1.5",
+            "width": "100%"
+          },
+          "type": {
+            "resolvedName": "Container"
+          }
+        }
+      },
+      "interactions": [
+        {
+          "id": "pnOqEGpL1b",
+          "label": "Choose another authentication method"
+        },
+        {
+          "id": "resend",
+          "label": "Send again"
+        },
+        {
+          "id": "oneTimeCodeId",
+          "label": "Verify OTP code"
+        }
+      ],
+      "screenId": "SC34PQcOGamW1DykGWbWu5hmszDVR"
+    },
+    {
+      "contents": {
+        "2X1y3vdDA-": {
+          "custom": {},
+          "displayName": "Divider",
+          "hidden": false,
+          "isCanvas": false,
+          "linkedNodes": {},
+          "nodes": [],
+          "parent": "RP8Dj8wg6E",
+          "props": {
+            "children": "Or",
+            "id": "2X1y3vdDA-",
+            "italic": false,
+            "mode": "primary",
+            "variant": "body1",
+            "vertical": false
+          },
+          "type": {
+            "resolvedName": "Divider"
+          }
+        },
+        "3TVRPM-NqM": {
+          "custom": {
+            "type": "button"
+          },
+          "displayName": "Button",
+          "hidden": false,
+          "isCanvas": false,
+          "linkedNodes": {},
+          "nodes": [],
+          "parent": "RP8Dj8wg6E",
+          "props": {
+            "children": "Continue",
+            "color": "primary",
+            "data-type": "button",
+            "formNoValidate": false,
+            "full-width": true,
+            "id": "3TVRPM-NqM",
+            "shape": "",
+            "size": "md",
+            "variant": "contained"
+          },
+          "type": {
+            "resolvedName": "Button"
+          }
+        },
+        "Ek1mWE2Mag": {
+          "custom": {
+            "type": "input"
+          },
+          "displayName": "Email Input",
+          "hidden": false,
+          "isCanvas": false,
+          "linkedNodes": {},
+          "nodes": [],
+          "parent": "RP8Dj8wg6E",
+          "props": {
+            "bordered": true,
+            "copy-to-clipboard": false,
+            "data-errormessage-pattern-mismatch": "Must be a valid email",
+            "data-errormessage-value-missing": "Please fill out this field.",
+            "full-width": true,
+            "id": "Ek1mWE2Mag",
+            "label": "",
+            "label-type": "static",
+            "max": 100,
+            "name": "email",
+            "pattern": "^[\\w._%+-]+@[\\w.-]+\\.[A-Za-z]{2,}$",
+            "placeholder": "Email address *",
+            "required": true,
+            "size": "md",
+            "type": "email"
+          },
+          "type": {
+            "resolvedName": "EmailInput"
+          }
+        },
+        "FTAR1uG31j": {
+          "custom": {},
+          "displayName": "Container",
+          "hidden": false,
+          "isCanvas": true,
+          "linkedNodes": {},
+          "nodes": [
+            "UTdxgyTBPh",
+            "GyGw_AJiyl"
+          ],
+          "parent": "ROOT",
+          "props": {
+            "align": "center",
+            "background": "#ffffff00",
+            "data-editor-type": "container",
+            "direction": "column",
+            "id": "FTAR1uG31j",
+            "justify": "start",
+            "paddingX": "4",
+            "paddingY": "1",
+            "spaceBetween": "0.5",
+            "st-items-grow": 0,
+            "width": "100%"
+          },
+          "type": {
+            "resolvedName": "Container"
+          }
+        },
+        "FYf4hmIZgm": {
+          "custom": {
+            "subType": "social",
+            "type": "button"
+          },
+          "displayName": "Google Button",
+          "hidden": false,
+          "isCanvas": false,
+          "linkedNodes": {},
+          "nodes": [],
+          "parent": "jmGk9e-cOx",
+          "props": {
+            "aria-label": "Sign in with Google",
+            "children": "Sign in with Google",
+            "color": "primary",
+            "data-descope-provider": "google",
+            "data-type": "social",
+            "formNoValidate": true,
+            "full-width": true,
+            "id": "FYf4hmIZgm",
+            "size": "md",
+            "st-label-spacing": "10px",
+            "startIcon": "google",
+            "startIconColorText": false,
+            "variant": "outline"
+          },
+          "type": {
+            "resolvedName": "GoogleButton"
+          }
+        },
+        "GyGw_AJiyl": {
+          "custom": {},
+          "displayName": "Text",
+          "hidden": false,
+          "isCanvas": false,
+          "linkedNodes": {},
+          "nodes": [],
+          "parent": "FTAR1uG31j",
+          "props": {
+            "children": "By continuing, I agree to the Company's [Privacy Statement](https://www.example.com/privacy) and [Terms of Service](https://www.example.com/terms)\n\n",
+            "full-width": false,
+            "id": "GyGw_AJiyl",
+            "isEnriched": true,
+            "italic": false,
+            "link-target-blank": true,
+            "mode": "primary",
+            "text-align": "center",
+            "variant": "body1"
+          },
+          "type": {
+            "resolvedName": "Text"
+          }
+        },
+        "JMZqBmza1C": {
+          "custom": {},
+          "displayName": "Error Message",
+          "hidden": false,
+          "isCanvas": false,
+          "linkedNodes": {},
+          "nodes": [],
+          "parent": "RP8Dj8wg6E",
+          "props": {
+            "data-type": "error-message",
+            "full-width": false,
+            "id": "JMZqBmza1C",
+            "italic": false,
+            "link-target-blank": true,
+            "mode": "error",
+            "text-align": "center",
+            "variant": "body1"
+          },
+          "type": {
+            "resolvedName": "ErrorMessage"
+          }
+        },
+        "ROOT": {
+          "custom": {},
+          "displayName": "Container",
+          "hidden": false,
+          "isCanvas": true,
+          "linkedNodes": {},
+          "nodes": [
+            "U9D2pHfkJp",
+            "FTAR1uG31j",
+            "RP8Dj8wg6E"
+          ],
+          "props": {
+            "align": "center",
+            "background": "",
+            "data-editor-type": "container",
+            "direction": "column",
+            "id": "ROOT",
+            "justify": "center",
+            "paddingX": "4",
+            "paddingY": "8",
+            "spaceBetween": "4",
+            "st-items-grow": 0,
+            "width": "100%"
+          },
+          "type": {
+            "resolvedName": "Container"
+          }
+        },
+        "RP8Dj8wg6E": {
+          "custom": {},
+          "displayName": "Container",
+          "hidden": false,
+          "isCanvas": true,
+          "linkedNodes": {},
+          "nodes": [
+            "Ek1mWE2Mag",
+            "3TVRPM-NqM",
+            "2X1y3vdDA-",
+            "jmGk9e-cOx",
+            "JMZqBmza1C"
+          ],
+          "parent": "ROOT",
+          "props": {
+            "align": "start",
+            "background": "#ffffff00",
+            "data-editor-type": "container",
+            "direction": "row",
+            "id": "RP8Dj8wg6E",
+            "justify": "center",
+            "paddingX": "1",
+            "paddingY": "1",
+            "spaceBetween": "4",
+            "st-items-grow": 0,
+            "width": "100%"
+          },
+          "type": {
+            "resolvedName": "Container"
+          }
+        },
+        "U9D2pHfkJp": {
+          "custom": {},
+          "displayName": "Logo",
+          "hidden": false,
+          "isCanvas": false,
+          "linkedNodes": {},
+          "nodes": [],
+          "parent": "ROOT",
+          "props": {
+            "alt": "Logo",
+            "height": "100px",
+            "id": "U9D2pHfkJp"
+          },
+          "type": {
+            "resolvedName": "Logo"
+          }
+        },
+        "UTdxgyTBPh": {
+          "custom": {},
+          "displayName": "Text",
+          "hidden": false,
+          "isCanvas": false,
+          "linkedNodes": {},
+          "nodes": [],
+          "parent": "FTAR1uG31j",
+          "props": {
+            "children": "Welcome!",
+            "full-width": false,
+            "id": "UTdxgyTBPh",
+            "isEnriched": true,
+            "italic": false,
+            "link-target-blank": true,
+            "mode": "primary",
+            "text-align": "center",
+            "variant": "h3"
+          },
+          "type": {
+            "resolvedName": "Text"
+          }
+        },
+        "jmGk9e-cOx": {
+          "custom": {},
+          "displayName": "Container",
+          "hidden": false,
+          "isCanvas": true,
+          "linkedNodes": {},
+          "nodes": [
+            "FYf4hmIZgm"
+          ],
+          "parent": "RP8Dj8wg6E",
+          "props": {
+            "align": "start",
+            "background": "#ffffff00",
+            "data-editor-type": "container",
+            "direction": "row",
+            "id": "jmGk9e-cOx",
+            "justify": "center",
+            "paddingX": "1",
+            "paddingY": "1",
+            "spaceBetween": "2",
+            "st-items-grow": 0,
+            "width": "100%"
+          },
+          "type": {
+            "resolvedName": "Container"
+          }
+        }
+      },
+      "interactions": [
+        {
+          "id": "3TVRPM-NqM",
+          "label": "Continue",
+          "type": "button"
+        },
+        {
+          "icon": "google",
+          "id": "FYf4hmIZgm",
+          "label": "Sign in with Google",
+          "subType": "social",
+          "type": "button"
+        }
+      ],
+      "screenId": "SC34PQcQ9AWaBqAEeuyBoPitKyOf3"
+    },
+    {
+      "contents": {
+        "17yIETavdM": {
+          "custom": {},
+          "displayName": "Container",
+          "hidden": false,
+          "isCanvas": true,
+          "linkedNodes": {},
+          "nodes": [
+            "VqlMUvC3Yz"
+          ],
+          "parent": "ROOT",
+          "props": {
+            "align": "start",
+            "background": "#D0021BFF",
+            "backgroundImageUrl": "",
+            "data-editor-type": "container",
+            "direction": "row",
+            "id": "17yIETavdM",
+            "justify": "center",
+            "paddingX": "1",
+            "paddingY": "1",
+            "spaceBetween": "1",
+            "st-items-grow": 0,
+            "width": "100%"
+          },
+          "type": {
+            "resolvedName": "Container"
+          }
+        },
+        "1sMmkeVxVT": {
+          "custom": {},
+          "displayName": "Error Message",
+          "hidden": false,
+          "isCanvas": false,
+          "linkedNodes": {},
+          "nodes": [],
+          "parent": "woAD652rBY",
+          "props": {
+            "align": "center",
+            "data-type": "error-message",
+            "full-width": false,
+            "id": "1sMmkeVxVT",
+            "italic": false,
+            "link-target-blank": true,
+            "mode": "error",
+            "text-align": "center",
+            "variant": "body1"
+          },
+          "type": {
+            "resolvedName": "ErrorMessage"
+          }
+        },
+        "6N3cb_5t3T": {
+          "custom": {
+            "type": "button"
+          },
+          "displayName": "Button",
+          "hidden": false,
+          "isCanvas": false,
+          "linkedNodes": {},
+          "nodes": [],
+          "parent": "woAD652rBY",
+          "props": {
+            "children": "Cancel",
+            "color": "primary",
+            "data-type": "button",
+            "formNoValidate": false,
+            "full-width": true,
+            "id": "6N3cb_5t3T",
+            "shape": "",
+            "size": "md",
+            "variant": "outline"
+          },
+          "type": {
+            "resolvedName": "Button"
+          }
+        },
+        "EQIG9X08-e": {
+          "custom": {},
+          "displayName": "Container",
+          "hidden": false,
+          "isCanvas": true,
+          "linkedNodes": {},
+          "nodes": [
+            "u8HvnRL4YV"
+          ],
+          "parent": "ROOT",
+          "props": {
+            "align": "start",
+            "background": "#FFFFFFFF",
+            "backgroundImageUrl": "",
+            "data-editor-type": "container",
+            "direction": "column",
+            "id": "EQIG9X08-e",
+            "justify": "start",
+            "paddingX": "1",
+            "paddingY": "1",
+            "spaceBetween": "4",
+            "st-items-grow": 0,
+            "width": "100%"
+          },
+          "type": {
+            "resolvedName": "Container"
+          }
+        },
+        "LmrSIGOWZb": {
+          "custom": {},
+          "displayName": "Text",
+          "hidden": false,
+          "isCanvas": false,
+          "linkedNodes": {},
+          "nodes": [],
+          "parent": "OHS3uAG0xM",
+          "props": {
+            "align": "center",
+            "children": "Connect {{project.name}} with {{thirdPartyApp.name}}\n\n",
+            "full-width": false,
+            "id": "LmrSIGOWZb",
+            "isEnriched": true,
+            "italic": false,
+            "link-target-blank": true,
+            "mode": "primary",
+            "text-align": "left",
+            "variant": "subtitle1"
+          },
+          "type": {
+            "resolvedName": "Text"
+          }
+        },
+        "NpV0qhppf_": {
+          "custom": {},
+          "displayName": "Text",
+          "hidden": false,
+          "isCanvas": false,
+          "linkedNodes": {},
+          "nodes": [],
+          "parent": "VqlMUvC3Yz",
+          "props": {
+            "children": "Using this application may put your data at risk\n\n",
+            "full-width": false,
+            "id": "NpV0qhppf_",
+            "isEnriched": true,
+            "italic": false,
+            "link-target-blank": true,
+            "mode": "primary",
+            "text-align": "center",
+            "variant": "subtitle2"
+          },
+          "type": {
+            "resolvedName": "Text"
+          }
+        },
+        "OHS3uAG0xM": {
+          "custom": {},
+          "displayName": "Container",
+          "hidden": false,
+          "isCanvas": true,
+          "linkedNodes": {},
+          "nodes": [
+            "LmrSIGOWZb"
+          ],
+          "parent": "ROOT",
+          "props": {
+            "align": "start",
+            "background": "#ffffff00",
+            "data-editor-type": "container",
+            "direction": "row",
+            "id": "OHS3uAG0xM",
+            "justify": "start",
+            "paddingX": "1",
+            "paddingY": "1",
+            "spaceBetween": "4",
+            "st-items-grow": 0,
+            "width": "100%"
+          },
+          "type": {
+            "resolvedName": "Container"
+          }
+        },
+        "ROOT": {
+          "custom": {},
+          "displayName": "Container",
+          "hidden": false,
+          "isCanvas": true,
+          "linkedNodes": {},
+          "nodes": [
+            "17yIETavdM",
+            "qIfDVKm2T2",
+            "OHS3uAG0xM",
+            "Zgp3CGaHAw",
+            "EQIG9X08-e",
+            "woAD652rBY"
+          ],
+          "props": {
+            "align": "center",
+            "background": "#FFFFFFFF",
+            "backgroundImageUrl": "",
+            "data-editor-type": "container",
+            "direction": "column",
+            "id": "ROOT",
+            "justify": "center",
+            "paddingX": "4",
+            "paddingY": "8",
+            "space-between": "md",
+            "spaceBetween": "4",
+            "st-items-grow": 0,
+            "width": "100%"
+          },
+          "type": {
+            "resolvedName": "Container"
+          }
+        },
+        "VqlMUvC3Yz": {
+          "custom": {},
+          "displayName": "Container",
+          "hidden": false,
+          "isCanvas": true,
+          "linkedNodes": {},
+          "nodes": [
+            "XGFJtHqtkn",
+            "NpV0qhppf_"
+          ],
+          "parent": "17yIETavdM",
+          "props": {
+            "align": "center",
+            "background": "#FFFFFFFF",
+            "backgroundImageUrl": "",
+            "data-editor-type": "container",
+            "direction": "column",
+            "id": "VqlMUvC3Yz",
+            "justify": "start",
+            "paddingX": "2",
+            "paddingY": "2",
+            "spaceBetween": "2",
+            "st-items-grow": 0,
+            "width": "100%"
+          },
+          "type": {
+            "resolvedName": "Container"
+          }
+        },
+        "XGFJtHqtkn": {
+          "custom": {},
+          "displayName": "Text",
+          "hidden": false,
+          "isCanvas": false,
+          "linkedNodes": {},
+          "nodes": [],
+          "parent": "VqlMUvC3Yz",
+          "props": {
+            "children": "Warning: Unverified Application\n\n",
+            "full-width": false,
+            "id": "XGFJtHqtkn",
+            "isEnriched": true,
+            "italic": false,
+            "link-target-blank": true,
+            "mode": "primary",
+            "text-align": "center",
+            "variant": "subtitle1"
+          },
+          "type": {
+            "resolvedName": "Text"
+          }
+        },
+        "Zgp3CGaHAw": {
+          "custom": {},
+          "displayName": "Container",
+          "hidden": false,
+          "isCanvas": true,
+          "linkedNodes": {},
+          "nodes": [
+            "_FBvzhJtOx"
+          ],
+          "parent": "ROOT",
+          "props": {
+            "align": "start",
+            "background": "#ffffff00",
+            "data-editor-type": "container",
+            "direction": "row",
+            "id": "Zgp3CGaHAw",
+            "justify": "start",
+            "paddingX": "1",
+            "paddingY": "1",
+            "spaceBetween": "4",
+            "st-items-grow": 0,
+            "width": "100%"
+          },
+          "type": {
+            "resolvedName": "Container"
+          }
+        },
+        "_FBvzhJtOx": {
+          "custom": {},
+          "displayName": "Text",
+          "hidden": false,
+          "isCanvas": false,
+          "linkedNodes": {},
+          "nodes": [],
+          "parent": "Zgp3CGaHAw",
+          "props": {
+            "children": "{{thirdPartyApp.name}} will be able to:\n\n",
+            "full-width": false,
+            "id": "_FBvzhJtOx",
+            "isEnriched": true,
+            "italic": false,
+            "link-target-blank": true,
+            "mode": "primary",
+            "text-align": "left",
+            "variant": "body1"
+          },
+          "type": {
+            "resolvedName": "Text"
+          }
+        },
+        "_Z6xPaS9jy": {
+          "custom": {
+            "type": "button"
+          },
+          "displayName": "Button",
+          "hidden": false,
+          "isCanvas": false,
+          "linkedNodes": {},
+          "nodes": [],
+          "parent": "woAD652rBY",
+          "props": {
+            "children": "Authorize",
+            "color": "primary",
+            "data-type": "button",
+            "formNoValidate": false,
+            "full-width": true,
+            "id": "_Z6xPaS9jy",
+            "shape": "",
+            "size": "md",
+            "variant": "contained"
+          },
+          "type": {
+            "resolvedName": "Button"
+          }
+        },
+        "ojc6ht-R78": {
+          "custom": {},
+          "displayName": "Inbound App Logo",
+          "hidden": false,
+          "isCanvas": false,
+          "linkedNodes": {},
+          "nodes": [],
+          "parent": "qIfDVKm2T2",
+          "props": {
+            "id": "ojc6ht-R78",
+            "size": "md"
+          },
+          "type": {
+            "resolvedName": "ThirdPartyAppLogo"
+          }
+        },
+        "qIfDVKm2T2": {
+          "custom": {},
+          "displayName": "Container",
+          "hidden": false,
+          "isCanvas": true,
+          "linkedNodes": {},
+          "nodes": [
+            "ojc6ht-R78"
+          ],
+          "parent": "ROOT",
+          "props": {
+            "align": "start",
+            "background": "#ffffff00",
+            "data-editor-type": "container",
+            "direction": "row",
+            "id": "qIfDVKm2T2",
+            "justify": "center",
+            "paddingX": "1",
+            "paddingY": "1",
+            "spaceBetween": "4",
+            "st-items-grow": 0,
+            "width": "100%"
+          },
+          "type": {
+            "resolvedName": "Container"
+          }
+        },
+        "u8HvnRL4YV": {
+          "custom": {},
+          "displayName": "Inbound App Scopes",
+          "hidden": false,
+          "isCanvas": false,
+          "linkedNodes": {},
+          "nodes": [],
+          "parent": "EQIG9X08-e",
+          "props": {
+            "id": "u8HvnRL4YV",
+            "name": "thirdPartyAppApproveScopes",
+            "size": "md",
+            "st-gap": "0em",
+            "variant": "checkbox"
+          },
+          "type": {
+            "resolvedName": "ScopesList"
+          }
+        },
+        "woAD652rBY": {
+          "custom": {},
+          "displayName": "Container",
+          "hidden": false,
+          "isCanvas": true,
+          "linkedNodes": {},
+          "nodes": [
+            "_Z6xPaS9jy",
+            "1sMmkeVxVT",
+            "6N3cb_5t3T"
+          ],
+          "parent": "ROOT",
+          "props": {
+            "align": "center",
+            "background": "#FFFFFFFF",
+            "data-editor-type": "container",
+            "direction": "column",
+            "id": "woAD652rBY",
+            "justify": "start",
+            "paddingX": "1",
+            "paddingY": "1",
+            "spaceBetween": "4",
+            "st-items-grow": 0,
+            "width": "100%"
+          },
+          "type": {
+            "resolvedName": "Container"
+          }
+        }
+      },
+      "interactions": [
+        {
+          "id": "6N3cb_5t3T",
+          "label": "Cancel",
+          "type": "button"
+        },
+        {
+          "id": "_Z6xPaS9jy",
+          "label": "Authorize",
+          "type": "button"
+        }
+      ],
+      "screenId": "SC34PQcSwk2gkZibYTKArwbQHdYT3"
+    }
+  ]
+}
